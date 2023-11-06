@@ -1,12 +1,54 @@
 const canvas = document.querySelector('canvas')
 
 const c = canvas.getContext('2d')//calling canvas API
+
 //import and render map
 canvas.width = 1520
 canvas.height= 690
 
-c.fillStyle = 'white'
-c.fillRect(0, 0, canvas.width, canvas.height)//creating canvas rectangle
+
+//slicing up the collison array into sub arrays from 1 to 484+i for collison/boundaries
+const collisionsMap = []
+for (let i=0; i< collisions.length; i +=484) {
+  collisionsMap.push(collisions.slice(i, 484 + i))
+}
+
+class Boundary{
+    static width = 16.8
+    static height = 16.8
+    constructor({position}){
+        this.position = position
+        this.width = 16.8
+        this.height = 16.8 
+    }
+
+    draw(){ 
+        c.fillStyle= 'red'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+
+const boundaries = []
+const offset = {
+    x: -454,
+    y: -1030
+}
+//looping over
+collisionsMap.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if (symbol === 222894)
+        boundaries.push(
+        new Boundary({
+        position: {
+           x:j * Boundary.width + offset.x,
+           y:i * Boundary.height + offset.y
+        }
+       })
+      )
+    })
+})
+
+console.log(boundaries)
 
 const image = new Image() //image constructor
 image.src = 'gameassests/Images/Images/townMap.png'
@@ -40,11 +82,14 @@ class Sprite {
     draw() {
         c.drawImage(this.image, this.position.x, this.position.y)
     }
-}   
+}  
+
+
+
 const background = new Sprite({
     position: {
-    x:-454,
-    y:-1030
+    x:offset.x,
+    y:offset.y
 },
 image: image
 })
@@ -71,6 +116,9 @@ function animate(){
     //bgimage should be fully loaded before rendering
     background.draw()
     //for bg image to load before character image
+    boundaries.forEach(boundary => {
+     boundary.draw()
+   })
     c.drawImage(playerImage, 
     0,//represents the x coordinate where we wants to crop
     0,//represents the y coordinate where we wants to crop
@@ -83,10 +131,10 @@ function animate(){
     )
 
     //moving map if player pressed a key and it sets its value to true
-    if(keys.w.pressed && lastKey ==='w') background.position.y = background.position.y + 3
-    else if(keys.a.pressed && lastKey ==='a') background.position.x = background.position.x + 3
-    else if(keys.s.pressed && lastKey ==='s') background.position.y = background.position.y - 3
-    else if(keys.d.pressed && lastKey ==='d') background.position.x = background.position.x - 3
+    if(keys.w.pressed && lastKey ==='w') background.position.y = background.position.y + 4
+    else if(keys.a.pressed && lastKey ==='a') background.position.x = background.position.x + 4
+    else if(keys.s.pressed && lastKey ==='s') background.position.y = background.position.y - 4
+    else if(keys.d.pressed && lastKey ==='d') background.position.x = background.position.x - 4
     
 }
 animate()
