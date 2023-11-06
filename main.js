@@ -19,7 +19,7 @@ image.onload = ()=>{
     //bgimage should be fully loaded before rendering
     c.drawImage(image, -700, -1000)
     //for bg image to load before character image
-    c.drawImage(playerImage, canvas.width/2, canvas.height/2)
+    c.drawImage(playerImage, canvas.width/2-playerImage.width/2, canvas.height/2)
 }
 
 
