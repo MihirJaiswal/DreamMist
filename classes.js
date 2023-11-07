@@ -1,16 +1,15 @@
 class Sprite {
-    constructor({position, velocity, image, frames= { max: 1 } }) {
+    constructor({position, velocity, image, frames= { max: 1 }, sprites }) {
         this.position = position//created a position
         this.image = image
-        this.frames = frames
+        this.frames = { ...frames, val: 0, elapsed: 0} 
 
-        this.image.onload = ()=>{
+        this.image.onload = () => {
             this.width = this.image.width / this.frames.max
             this.height = this.image.height
-            console.log(this.width)
-            console.log(this.height)
         }
-        
+        this.moving = false
+        this.sprites = sprites
         
     }
     
@@ -18,7 +17,7 @@ class Sprite {
     draw() {
         c.drawImage(
             this.image, 
-            0,//represents the x coordinate where we wants to crop
+            this.frames.val * this.width,//represents the x coordinate where we wants to crop
             0,//represents the y coordinate where we wants to crop
             this.image.width / this.frames.max,//crop width how mmuch we want to crop 
             this.image.height,//crop height
@@ -27,6 +26,15 @@ class Sprite {
             this.image.width / this.frames.max,//for positioning one more time 
             this.image.height
             )
+            if(!this.moving) return
+            if(this.frames.max > 1){
+                this.frames.elapsed++
+            }
+
+            if (this.frames.elapsed % 10 === 0){
+            if(this.frames.val < this.frames.max - 1 ) this.frames.val++
+            else this.frames.val = 0 
+        }
     }
 } 
 

@@ -47,22 +47,15 @@ foregroundImage.src = 'gameassests/Images/Images/foreGroundObject.png'
 const playerImage = new Image()
 playerImage.src = 'gameassests/Images/Images/playerDown.png'
 
-/*image.onload = ()=>{
-    //bgimage should be fully loaded before rendering
-    c.drawImage(image, -454, -1030)
-    //for bg image to load before character image
-    c.drawImage(playerImage, 
-        0,//represents the x coordinate where we wants to crop
-        0,//represents the y coordinate where we wants to crop
-        playerImage.width /4,//crop width how mmuch we want to crop 
-        playerImage.height,//crop height
-        canvas.width / 2 - playerImage.width / 4 / 2,
-        canvas.height /2  - playerImage.height/2,
-        playerImage.width / 4,//for positioning one more time 
-        playerImage.height
-    )
-}*/
- 
+const playerUpImage = new Image()
+playerUpImage.src = 'gameassests/Images/Images/playerUp.png'
+
+const playerLeftImage = new Image()
+playerLeftImage.src = 'gameassests/Images/Images/playerLeft.png'
+
+const playerRightImage = new Image()
+playerRightImage.src = 'gameassests/Images/Images/playerRight.png'
+
 
 const player = new Sprite({
     position:{
@@ -72,6 +65,13 @@ const player = new Sprite({
     image: playerImage,
     frames: {
         max: 4
+    },
+    sprites : {
+        up: playerUpImage,
+        left: playerLeftImage,
+        right: playerRightImage,
+        down: playerImage
+
     }
 })
 
@@ -138,7 +138,11 @@ function animate(){
    
     //moving map if player pressed a key and it sets its value to true
     let moving = true
+    player.moving = false
+
     if(keys.w.pressed && lastKey ==='w'){
+    player.moving = true
+    player.image = player.sprites.up
     for (let i = 0 ; i < boundaries.length; i++){
      const boundary = boundaries[i]
      if(
@@ -171,6 +175,8 @@ function animate(){
     }
 
     else if(keys.a.pressed && lastKey ==='a'){
+        player.moving = true
+        player.image = player.sprites.left
         for (let i = 0 ; i < boundaries.length; i++){
             const boundary = boundaries[i]
             if(
@@ -203,6 +209,8 @@ function animate(){
     }
 
     else if(keys.s.pressed && lastKey ==='s'){
+        player.moving = true
+        player.image = player.sprites.down
         for (let i = 0 ; i < boundaries.length; i++){
             const boundary = boundaries[i]
             if(
@@ -234,6 +242,8 @@ function animate(){
         })
     }
     else if(keys.d.pressed && lastKey ==='d') {
+        player.moving = true
+        player.image = player.sprites.right
         for (let i = 0 ; i < boundaries.length; i++){
             const boundary = boundaries[i]
             if(
