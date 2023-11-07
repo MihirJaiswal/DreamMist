@@ -189,8 +189,9 @@ function animate(){
         /*overlappingArea > (player.width * player.height) / 2 &&*/
         Math.random() < 0.0007
       ) {
-        console.log('hi')
-        window.cancelAnimationFrame(animationId)  
+        
+        window.cancelAnimationFrame(animationId)
+
         battle.initiated = true
         gsap.to('#overlappingDiv', {
             opacity: 1,
@@ -200,19 +201,20 @@ function animate(){
             onComplete() {
                 gsap.to('#overlappingDiv', {
                     opacity: 1,
-                    duration: 0.4
+                    duration: 0.4,
+                    onComplete(){
+
+                        animateBattle()
+                        gsap.to('#overlappingDiv', {
+                            opacity: 0,
+                            duration: 0.4
+                           
+                        })
+                    }
                 })
-
-                //
-
-
-                //
-                animateBattle()
-                
 
             }
         })
-        
         break
       }
     }
@@ -360,10 +362,19 @@ function animate(){
 }
 animate()
 
+const battleBackgroundImage = new Image()
+battleBackgroundImage.src = 'gameassests/Images/Images/battleBackGround.png'
+const battleBackrgound = new Sprite({
+    position:{
+        x: 0,
+        y: 0
+    },
+    image: battleBackgroundImage
+})
 
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
-    console.log('animating battle');
+    battleBackrgound.draw()
 }
 
 //move player through map
