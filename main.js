@@ -411,8 +411,8 @@ function animateBattle(){
     pokemon2.draw()
 }
 
-animateBattle()
-//animate()
+//animateBattle()
+animate()
 //move player through map
 let lastKey = ''
 window.addEventListener('keydown', (event) => {
