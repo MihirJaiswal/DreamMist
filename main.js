@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas')
-
 const c = canvas.getContext('2d')//calling canvas API
-console.log(battleZonesData);
+
+
 //import and render map
 canvas.width = 1520
 canvas.height= 690
@@ -137,9 +137,14 @@ function rectangularCollision({rectangle1, rectangle2}){
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y 
     )
 }
+
+const battle = {
+    initiated: false
+}
+
 //animation loop
 function animate(){
-    window.requestAnimationFrame(animate)
+   const animationId = window.requestAnimationFrame(animate)
     //bgimage should be fully loaded before rendering
     background.draw()
     //for bg image to load before character image
@@ -154,12 +159,18 @@ function animate(){
 
     player.draw()
     foreground.draw()
+
+     //moving map if player pressed a key and it sets its value to true
+     let moving = true
+     player.moving = false
     
+    
+    if (battle.initiated) return
      // activate a battle
     if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
     for (let i = 0; i < battleZones.length; i++) {
       const battleZone = battleZones[i]
-      const overlappingArea =
+      /*const overlappingArea =
         (Math.min(
           player.position.x + player.width,
           battleZone.position.x + battleZone.width
@@ -169,7 +180,7 @@ function animate(){
           player.position.y + player.height,
           battleZone.position.y + battleZone.height
         ) -
-          Math.max(player.position.y, battleZone.position.y))
+          Math.max(player.position.y, battleZone.position.y))*/
       if (
         rectangularCollision({
           rectangle1: player,
@@ -179,6 +190,29 @@ function animate(){
         Math.random() < 0.0007
       ) {
         console.log('hi')
+        window.cancelAnimationFrame(animationId)  
+        battle.initiated = true
+        gsap.to('#overlappingDiv', {
+            opacity: 1,
+            repeat: 3,
+            yoyo: true,
+            duration: 0.4,
+            onComplete() {
+                gsap.to('#overlappingDiv', {
+                    opacity: 1,
+                    duration: 0.4
+                })
+
+                //
+
+
+                //
+                animateBattle()
+                
+
+            }
+        })
+        
         break
       }
     }
@@ -186,9 +220,7 @@ function animate(){
    
      
    
-    //moving map if player pressed a key and it sets its value to true
-    let moving = true
-    player.moving = false
+   
 
     if(keys.w.pressed && lastKey ==='w'){
     player.moving = true
@@ -245,7 +277,7 @@ function animate(){
              ) 
              
              {
-             console.log('coliding')
+             
              moving = false 
              break
            }
@@ -279,7 +311,7 @@ function animate(){
              ) 
              
              {
-             console.log('coliding')
+             
              moving = false 
              break
            }
@@ -312,7 +344,6 @@ function animate(){
              ) 
              
              {
-             console.log('coliding')
              moving = false 
              break
            }
@@ -328,6 +359,12 @@ function animate(){
     
 }
 animate()
+
+
+function animateBattle(){
+    window.requestAnimationFrame(animateBattle)
+    console.log('animating battle');
+}
 
 //move player through map
 let lastKey = ''
