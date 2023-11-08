@@ -385,7 +385,8 @@ const pokemon1 = new Sprite({
         max:2,
         hold: 60
     },
-    animate: true
+    animate: true,
+    isEnemy: true
 })
 
 const pokemon2Image = new Image()
@@ -413,6 +414,19 @@ function animateBattle(){
 
 animateBattle()
 //animate()
+
+document.querySelectorAll('button').forEach(button=>{
+    button.addEventListener('click',() => {
+        pokemon2.attack({ attack:{
+            name: 'Tackle',
+            damage: 10,
+            type: 'Normal'
+        },
+        recipient: pokemon1
+     })
+    })
+})
+ 
 //move player through map
 let lastKey = ''
 window.addEventListener('keydown', (event) => {
