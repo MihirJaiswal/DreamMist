@@ -1,7 +1,7 @@
 # DreamMist
 DreamMist is a pokemon game made by using HTML canvas.
 
-# what is HTML Canvas?
+# What is HTML Canvas?
 An HTML canvas is a powerful and flexible HTML element that allows you to dynamically render graphics, animations, and other visual content directly on a web page using JavaScript.
 
 # Map creation
