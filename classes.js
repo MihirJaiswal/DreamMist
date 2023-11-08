@@ -6,7 +6,8 @@ class Sprite {
         frames= { max: 1, hold: 10  }, 
         sprites, 
         animate = false,
-        isEnemy = false
+        isEnemy = false,
+        rotation = 0
         }) {
         this.position = position//created a position
         this.image = image
@@ -21,12 +22,16 @@ class Sprite {
         this.opacity = 1
         this.health = 100
         this.isEnemy = isEnemy
+        this.rotation = rotation
         
     }
     
 
     draw() {
         c.save()
+        c.translate(this.position.x + this.width / 2, this.position.y + this.height /2)
+        c.rotate(this.rotation)
+        c.translate(-this.position.x - this.width / 2, -this.position.y - this.height /2)
         c.globalAlpha = this.opacity
         c.drawImage(
             this.image, 
@@ -53,15 +58,71 @@ class Sprite {
     }
 
     attack({attack , recipient}) {
-        const tl =  gsap.timeline()
+
+        let healthBar = '#enemyHealthBar'
+        if(this.isEnemy) healthBar = '#playerHealthBar'
+
+        let rotation = 1
+        if(this.isEnemy) rotation = -2.2
         
         this.health = this.health - attack.damage
+
+        switch (attack.name){
+            case 'SeedBomb':
+              const seedbombImage = new Image()
+              seedbombImage.src = 'gameassests/Images/Images/seedBomb.png'
+              const seedbomb = new Sprite({
+                position:{
+                    x:this.position.x,
+                    y:this.position.y
+                },
+                image: seedbombImage,
+
+                frames:{
+                    max: 4,
+                    hold: 10
+                },
+                animate: true,
+                rotation: rotation
+              }) 
+
+             //  renderedSrites.push(seedbomb)
+               renderedSrites.splice(1,0, seedbomb)
+
+               gsap.to(seedbomb.position, {
+                x: recipient.position.x,
+                y: recipient.position.y,
+                onComplete: () => {
+                    gsap.to(healthBar, {
+                        width: this.health + '%'
+                    })
+        
+                    gsap.to(recipient.position,{
+                        x: recipient.position.x + 20,
+                        yoyo: true,
+                        repeat:5,
+                        duration: 0.08
+                    })
+                    gsap.to(recipient, {
+                        opacity: 0,
+                        repeat: 5,
+                        yoyo:true,
+                        duration: 0.1
+                    })
+                    renderedSrites.splice(1, 1)
+                }
+               })
+
+              break
+            case 'BodySlam':
+                const tl = gsap.timeline()
+        
+        
 
         let movementDistance = 20
         if(this.isEnemy) movementDistance = -20
 
-        let healthBar = '#enemyHealthBar'
-        if(this.isEnemy) healthBar = '#playerHealthBar'
+          
 
        tl.to(this.position, {
         x: this.position.x - movementDistance
@@ -92,7 +153,7 @@ class Sprite {
       })
     }
 } 
-
+}
 class Boundary{
     static width = 16.8
     static height = 16.8

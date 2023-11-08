@@ -404,25 +404,24 @@ const pokemon2 = new Sprite({
     animate: true
 })
 
-
+const renderedSrites = [pokemon1, pokemon2]
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
     battleBackrgound.draw()
-    pokemon1.draw()
-    pokemon2.draw()
+
+    renderedSrites.forEach((sprite)=>{
+        sprite.draw()
+    })
 }
 
 animateBattle()
 //animate()
 
-document.querySelectorAll('button').forEach(button=>{
-    button.addEventListener('click',() => {
-        pokemon2.attack({ attack:{
-            name: 'Tackle',
-            damage: 10,
-            type: 'Normal'
-        },
-        recipient: pokemon1
+document.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', (event) => {
+       const selectedAttack = attacks[event.currentTarget.innerHTML]
+        pokemon2.attack({ attack:selectedAttack,
+        recipient: pokemon1, renderedSrites
      })
     })
 })
