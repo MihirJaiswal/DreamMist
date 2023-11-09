@@ -1,9 +1,16 @@
 # DreamMist
 DreamMist is a pokemon game made by using HTML canvas.
 
+![ss1](https://github.com/MihirJaiswal/DreamMist/assets/137146214/2bb0fd2e-4633-4d2e-bcd6-30ea1214bbd2)
+![ss2](https://github.com/MihirJaiswal/DreamMist/assets/137146214/1fd5411d-f9ec-46c8-8d6c-798a516fa582)
+
+
 ## Disclaimer
 
-- Use "w" "a" "s" and "d" key for moving, make sure your caps lock is off. 
+- Use "w" "a" "s" and "d" key for moving, make sure your caps lock is off.
+
+  
+     ![wasd](https://github.com/MihirJaiswal/DreamMist/assets/137146214/ca3f4075-ec8b-4f8f-b5cc-cbfb6bb5fbf9)
 
 - Click on your screen once if the bg audio is not audible.
 
@@ -17,7 +24,11 @@ DreamMist is a pokemon game made by using HTML canvas.
 
 ## Map creation
 - For creating map i used "Tiled" map editor.
-Tiled is a popular open-source map editor for creating 2D tile-based maps. It is primarily used by game developers, but it can also be used for other applications that require the creation of maps and tilesets. 
+Tiled is a popular open-source map editor for creating 2D tile-based maps. It is primarily used by game developers, but it can also be used for other applications that require the creation of maps and tilesets.
+
+
+![tilelogo](https://github.com/MihirJaiswal/DreamMist/assets/137146214/edc6239c-e55f-49c3-8ab3-c4fa5b8f68d6)
+
 
 ## Animation
 - Animation of transition is done by GSAP which is a javascript library used for creating high-performance animations and interactive content on websites. 
