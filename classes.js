@@ -65,7 +65,8 @@ class Monster extends Sprite {
         animate = false,
         rotation = 0,
         isEnemy = false,
-        name
+        name,
+        attacks
     }) {
         super({
             position,
@@ -79,6 +80,7 @@ class Monster extends Sprite {
         this.health = 100
         this.isEnemy = isEnemy
         this.name = name
+        this.attacks = attacks
     }
     attack({attack , recipient}) {
         document.querySelector('#dialogueBox').style.display = 'block'

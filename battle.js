@@ -11,14 +11,16 @@ const battleBackrgound = new Sprite({
 
 
 const pokemon1 = new Monster(monsters.pokemon1)
-
-
 const pokemon2 = new Monster(monsters.pokemon2)
 
 const renderedSrites = [pokemon1, pokemon2]
-const button = document.createElement('button')
-button.innerHTML = 'SeedBomb'
+
+pokemon2.attacks.forEach ((attack) => {
+    const button = document.createElement('button')
+button.innerHTML = attack.name
 document.querySelector('#attacksBox').append(button)
+})
+
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
     battleBackrgound.draw()
