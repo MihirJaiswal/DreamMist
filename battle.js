@@ -17,8 +17,8 @@ const renderedSrites = [pokemon1, pokemon2]
 
 pokemon2.attacks.forEach ((attack) => {
     const button = document.createElement('button')
-button.innerHTML = attack.name
-document.querySelector('#attacksBox').append(button)
+    button.innerHTML = attack.name
+    document.querySelector('#attacksBox').append(button)
 })
 
 function animateBattle(){
@@ -30,8 +30,8 @@ function animateBattle(){
     })
 }
 
-animateBattle()
-//animate()
+//animateBattle()
+animate()
 const queue = []
 
 document.querySelectorAll('button').forEach((button) => {
@@ -52,8 +52,8 @@ document.querySelectorAll('button').forEach((button) => {
     })
     button.addEventListener('mouseenter', (event) => {
         const selectedAttack = attacks[event.currentTarget.innerHTML]
-        document.querySelector('#attackType').innerHTML = selectedAttack.type
-        document.querySelector('#attackType').style.color = selectedAttack.color
+       document.querySelector('#attackType').innerHTML = selectedAttack.type
+       document.querySelector('#attackType').style.color = selectedAttack.color
     })
 })
 

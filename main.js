@@ -4,7 +4,7 @@ const c = canvas.getContext('2d')//calling canvas API
 
 //import and render map
 canvas.width = 1520
-canvas.height= 690
+canvas.height= 679
 
 
 //slicing up the collison array into sub arrays from 1 to 484+i for collison/boundaries
