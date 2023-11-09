@@ -18,7 +18,7 @@ const monsters = {
             },
             animate: true,
             name: 'Venusaur',
-            attacks: [attacks.BodySlam , attacks.SeedBomb]
+            attacks: [attacks.BodySlam , attacks.SeedBomb, attacks.MudShot, attacks.SludgeBomb]
         
     },
 
@@ -35,7 +35,7 @@ const monsters = {
         animate: true,
         isEnemy: true,
         name: 'Quagsire',
-        attacks: [attacks.BodySlam]
+        attacks: [attacks.BodySlam, attacks.MudShot, attacks.SludgeBomb, attacks.Surf]
     }
 
 }

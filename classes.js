@@ -140,6 +140,7 @@ class Monster extends Sprite {
                })
 
               break
+
             case 'BodySlam':
                 const tl = gsap.timeline()
         
@@ -178,6 +179,148 @@ class Monster extends Sprite {
         x: this.position.x 
       })
       break
+      
+      case 'MudShot':
+        const MudShotImage = new Image()
+        MudShotImage.src = 'gameassests/Images/Images/mudShot.png'
+        const MudShot = new Sprite({
+          position:{
+              x:this.position.x,
+              y:this.position.y
+          },
+          image: MudShotImage,
+
+          frames:{
+              max: 2,
+              hold: 15
+          },
+          animate: true,
+        }) 
+
+       
+         renderedSrites.splice(1,0, MudShot)
+
+         gsap.to(MudShot.position, {
+          x: recipient.position.x,
+          y: recipient.position.y,
+          onComplete: () => {
+              gsap.to(healthBar, {
+                  width: this.health + '%'
+              })
+  
+              gsap.to(recipient.position,{
+                  x: recipient.position.x + 20,
+                  yoyo: true,
+                  repeat:5,
+                  duration: 0.08
+              })
+              gsap.to(recipient, {
+                  opacity: 0,
+                  repeat: 5,
+                  yoyo:true,
+                  duration: 0.1
+              })
+              renderedSrites.splice(1, 1)
+          }
+         })
+         break
+   
+         case 'SludgeBomb':
+            const SludgebombImage = new Image()
+            SludgebombImage.src = 'gameassests/Images/Images/sludgeBomb.png'
+            const Sludgebomb = new Sprite({
+              position:{
+                  x:this.position.x,
+                  y:this.position.y
+              },
+              image: SludgebombImage,
+    
+              frames:{
+                  max: 1,
+                  hold: 10
+              },
+              animate: true,
+            }) 
+    
+           
+             renderedSrites.splice(1,0, Sludgebomb)
+    
+             gsap.to(Sludgebomb.position, {
+              x: recipient.position.x,
+              y: recipient.position.y,
+              onComplete: () => {
+                  gsap.to(healthBar, {
+                      width: this.health + '%'
+                  })
+      
+                  gsap.to(recipient.position,{
+                      x: recipient.position.x + 20,
+                      yoyo: true,
+                      repeat:5,
+                      duration: 0.08
+                  })
+                  gsap.to(recipient, {
+                      opacity: 0,
+                      repeat: 5,
+                      yoyo:true,
+                      duration: 0.1
+                  })
+                  renderedSrites.splice(1, 1)
+              }
+             })
+             break
+
+             case 'Surf':
+                const SurfImage = new Image()
+                SurfImage.src = 'gameassests/Images/Images/mudShot.png'
+                const Surf = new Sprite({
+                  position:{
+                      x:this.position.x,
+                      y:this.position.y
+                  },
+                  image: SurfImage,
+        
+                  frames:{
+                      max: 2,
+                      hold: 15
+                  },
+                  animate: true,
+                }) 
+        
+               
+                 renderedSrites.splice(1,0, Surf)
+        
+                 gsap.to(MudShot.position, {
+                  x: recipient.position.x,
+                  y: recipient.position.y,
+                  onComplete: () => {
+                      gsap.to(healthBar, {
+                          width: this.health + '%'
+                      })
+          
+                      gsap.to(recipient.position,{
+                          x: recipient.position.x + 20,
+                          yoyo: true,
+                          repeat:5,
+                          duration: 0.08
+                      })
+                      gsap.to(recipient, {
+                          opacity: 0,
+                          repeat: 5,
+                          yoyo:true,
+                          duration: 0.1
+                      })
+                      renderedSrites.splice(1, 1)
+                  }
+                 })
+
+
+
+
+
+
+
+
     }
   } 
 }
