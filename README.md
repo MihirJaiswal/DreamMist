@@ -11,3 +11,5 @@ Tiled is a popular open-source map editor for creating 2D tile-based maps. It is
 # Animation
 Animation of transition is done by GSAP which is a javascript library used for creating high-performance animations and interactive content on websites. 
 
+# Music
+For intregating music into the map i used Howler.js which is a JavaScript library that makes it easier to work with audio on the web.

@@ -193,6 +193,8 @@ function animate(){
         
         window.cancelAnimationFrame(animationId)
 
+        audio.Map.stop()
+        audio.battle.play()
         battle.initiated = true
         gsap.to('#overlappingDiv', {
             opacity: 1,
@@ -406,6 +408,13 @@ window.addEventListener('keyup', (event) => {
     }
 })
 
+let clicked = false
+addEventListener('click', () => {
+    if(!clicked){
+        audio.Map.play()
+        clicked = true
+    }
+})
 
 
  
