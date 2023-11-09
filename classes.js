@@ -82,6 +82,11 @@ class Monster extends Sprite {
         this.name = name
         this.attacks = attacks
     }
+
+    faint(){
+       console.log('meow')
+    }
+
     attack({attack , recipient}) {
         document.querySelector('#dialogueBox').style.display = 'block'
         document.querySelector('#dialogueBox').innerHTML = this.name + ' used ' + attack.name
@@ -91,7 +96,7 @@ class Monster extends Sprite {
         let rotation = 1
         if(this.isEnemy) rotation = -2.2
         
-        this.health = this.health - attack.damage
+        recipient.health -= attack.damage
 
         switch (attack.name){
             case 'SeedBomb':
@@ -120,7 +125,7 @@ class Monster extends Sprite {
                 y: recipient.position.y,
                 onComplete: () => {
                     gsap.to(healthBar, {
-                        width: this.health + '%'
+                        width: recipient.health + '%'
                     })
         
                     gsap.to(recipient.position,{
@@ -159,7 +164,7 @@ class Monster extends Sprite {
          onComplete: () => {
 
             gsap.to(healthBar, {
-                width: this.health + '%'
+                width: recipient.health + '%'
             })
 
             gsap.to(recipient.position,{
@@ -205,7 +210,7 @@ class Monster extends Sprite {
           y: recipient.position.y,
           onComplete: () => {
               gsap.to(healthBar, {
-                  width: this.health + '%'
+                  width: recipient.health + '%'
               })
   
               gsap.to(recipient.position,{
@@ -251,7 +256,7 @@ class Monster extends Sprite {
               y: recipient.position.y,
               onComplete: () => {
                   gsap.to(healthBar, {
-                      width: this.health + '%'
+                      width: recipient.health + '%'
                   })
       
                   gsap.to(recipient.position,{

@@ -30,8 +30,8 @@ function animateBattle(){
     })
 }
 
-//animateBattle()
-animate()
+animateBattle()
+//animate()
 const queue = []
 
 document.querySelectorAll('button').forEach((button) => {
@@ -40,6 +40,13 @@ document.querySelectorAll('button').forEach((button) => {
         pokemon2.attack({ attack:selectedAttack,
         recipient: pokemon1, renderedSrites
      }) 
+
+     if (pokemon1.health <= 0){
+        queue.push(()=>{
+           pokemon1.faint()
+         })
+         return
+     }
 
      const randomAttack = pokemon1.attacks[Math.floor(Math.random() * pokemon1.attacks.length)]
 
