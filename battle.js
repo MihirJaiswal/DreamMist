@@ -54,6 +54,12 @@ document.querySelectorAll('button').forEach((button) => {
         pokemon1.attack({ attack: randomAttack,
             recipient: pokemon2, renderedSrites
          })
+         if (pokemon2.health <= 0){
+            queue.push(()=>{
+               pokemon2.faint()
+             })
+             return
+         }
      })
      
     })

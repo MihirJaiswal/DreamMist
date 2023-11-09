@@ -83,8 +83,14 @@ class Monster extends Sprite {
         this.attacks = attacks
     }
 
-    faint(){
-       console.log('meow')
+    faint() {
+        document.querySelector('#dialogueBox').innerHTML = this.name + ' has no energy left for the battle, ' + this.name + 'fainted!' 
+        gsap.to(this.position, {
+          y: this.position.y + 20
+        })
+        gsap.to(this, {
+          opacity: 0
+        })
     }
 
     attack({attack , recipient}) {
