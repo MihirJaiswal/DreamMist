@@ -19,4 +19,9 @@ const audio = {
         src: 'gameassests/Audio/Audio/attack2.2.wav',
         html5: true
     }),
+    win: new Howl({
+        src: 'gameassests/Audio/Audio/win.wav',
+        html5: true
+    })
+    
 }
