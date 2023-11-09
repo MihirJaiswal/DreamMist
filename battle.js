@@ -24,7 +24,7 @@ function initBattle(){
     document.querySelector('#enemyHealthBar').style.width = '100%'
     document.querySelector('#playerHealthBar').style.width = '100%'
     document.querySelector('#attacksBox').replaceChildren()
-    
+
     pokemon1 = new Monster(monsters.pokemon1)
     pokemon2 = new Monster(monsters.pokemon2)
     renderedSrites = [pokemon1, pokemon2]
@@ -58,6 +58,7 @@ function initBattle(){
                         gsap.to('#overlappingDiv',{
                             opacity: 0
                         })
+                        battle.initiated = false
                     }
                 })
              })
@@ -73,7 +74,20 @@ function initBattle(){
                 queue.push(()=>{
                    pokemon2.faint()
                  })
-                 return
+                 queue.push(() => {
+                    gsap.to('#overlappingDiv',{
+                        opacity: 1,
+                        onComplete: () => {
+                            cancelAnimationFrame(battleAnimationId)
+                            animate()
+                            document.querySelector('#userInterface').style.display = 'none'
+                            gsap.to('#overlappingDiv',{
+                                opacity: 0
+                            })
+                            battle.initiated = false
+                        }
+                    })
+                 })
              }
          })
          

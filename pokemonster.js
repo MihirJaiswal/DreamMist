@@ -1,9 +1,3 @@
-const pokemon2Image = new Image()
-pokemon2Image.src = 'gameassests/Images/Images/venasaurSprite.png'
-
-const pokemon1Image = new Image()
-pokemon1Image.src = 'gameassests/Images/Images/quagsireSprite.png'
-
 const monsters = {
     pokemon2: {
         
@@ -11,7 +5,9 @@ const monsters = {
                 x:330,
                 y:333
             },
-            image: pokemon2Image,
+            image: {
+                src: 'gameassests/Images/Images/venasaurSprite.png'
+            },
             frames:{
                 max:2,
                 hold: 60
@@ -27,7 +23,9 @@ const monsters = {
             x: 900,
             y:180
         },
-        image: pokemon1Image,
+        image:{
+            src: 'gameassests/Images/Images/quagsireSprite.png'
+        },
         frames:{
             max:2,
             hold: 60
