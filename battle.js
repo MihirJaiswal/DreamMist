@@ -10,10 +10,10 @@ const battleBackrgound = new Sprite({
 })
 
 
-const pokemon1 = new Sprite(monsters.pokemon1)
+const pokemon1 = new Monster(monsters.pokemon1)
 
 
-const pokemon2 = new Sprite(monsters.pokemon2)
+const pokemon2 = new Monster(monsters.pokemon2)
 
 const renderedSrites = [pokemon1, pokemon2]
 const button = document.createElement('button')
