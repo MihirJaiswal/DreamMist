@@ -23,8 +23,60 @@
     button:hover{
         background-color: #ccc;
     }
+
+    .page-loader {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgb(248, 14, 185);
+      z-index: 1000;
+    }
+
+    
+    .page-loader img {
+      width: 410px; 
+      height: 220px;
+      display: block;
+      margin: auto;
+    }
+
+      .page-loader .txt {
+      color: #ffffff;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-top: 20px; 
+    }
+
+    @keyframes sk-scaleout {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+  </style>
+
+
+
 </style>
 </head>
+
+<div class="page-loader">
+    <div class="spinner">
+      <img src="gameassests/Images/Images/loader.gif" alt="">
+    </div>
+    <div class="txt">DreamMist is Loading...</div>
+</div>
 
 <div style="display:inline-block; position: relative;">
     <div id="overlappingDiv" 
@@ -139,6 +191,13 @@
     </div>
 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    function hideLoader(){
+      $('.page-loader').fadeOut('slow');
+    }
+    </script>
+    <body onload="hideLoader()"></body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
