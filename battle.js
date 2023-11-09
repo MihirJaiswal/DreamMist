@@ -21,9 +21,13 @@ pokemon2.attacks.forEach ((attack) => {
     document.querySelector('#attacksBox').append(button)
 })
 
+let battleAnimationId
+
 function animateBattle(){
-    window.requestAnimationFrame(animateBattle)
+   battleAnimationId =  window.requestAnimationFrame(animateBattle)
     battleBackrgound.draw()
+
+
 
     renderedSrites.forEach((sprite)=>{
         sprite.draw()
@@ -45,7 +49,18 @@ document.querySelectorAll('button').forEach((button) => {
         queue.push(()=>{
            pokemon1.faint()
          })
-         return
+         queue.push(() => {
+            gsap.to('#overlappingDiv',{
+                opacity: 1,
+                onComplete: () => {
+                    cancelAnimationFrame(battleAnimationId)
+                    animate()
+                    gsap.to('#overlappingDiv',{
+                        opacity: 0
+                    })
+                }
+            })
+         })
      }
 
      const randomAttack = pokemon1.attacks[Math.floor(Math.random() * pokemon1.attacks.length)]
