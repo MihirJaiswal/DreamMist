@@ -8,6 +8,7 @@ DreamMist is a pokemon game made by using HTML canvas.
 ## Disclaimer
 
 - Use "w" "a" "s" and "d" key for moving, make sure your caps lock is off. 
+![wasd](https://github.com/MihirJaiswal/DreamMist/assets/137146214/ca3f4075-ec8b-4f8f-b5cc-cbfb6bb5fbf9)
 
 - Click on your screen once if the bg audio is not audible.
 
