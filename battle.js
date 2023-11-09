@@ -9,40 +9,16 @@ const battleBackrgound = new Sprite({
     image: battleBackgroundImage
 })
 
-const pokemon1Image = new Image()
-pokemon1Image.src = 'gameassests/Images/Images/quagsireSprite.png'
-const pokemon1 = new Sprite({
-    position: {
-        x: 900,
-        y:180
-    },
-    image: pokemon1Image,
-    frames:{
-        max:2,
-        hold: 60
-    },
-    animate: true,
-    isEnemy: true,
-    name: 'Quagsire'
-})
 
-const pokemon2Image = new Image()
-pokemon2Image.src = 'gameassests/Images/Images/venasaurSprite.png'
-const pokemon2 = new Sprite({
-    position: {
-        x:330,
-        y:333
-    },
-    image: pokemon2Image,
-    frames:{
-        max:2,
-        hold: 60
-    },
-    animate: true,
-    name: 'Venusaur'
-})
+const pokemon1 = new Sprite(monsters.pokemon1)
+
+
+const pokemon2 = new Sprite(monsters.pokemon2)
 
 const renderedSrites = [pokemon1, pokemon2]
+const button = document.createElement('button')
+button.innerHTML = 'SeedBomb'
+document.querySelector('#attacksBox').append(button)
 function animateBattle(){
     window.requestAnimationFrame(animateBattle)
     battleBackrgound.draw()
