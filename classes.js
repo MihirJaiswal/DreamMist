@@ -240,6 +240,7 @@ class Monster extends Sprite {
                   hold: 10
               },
               animate: true,
+              rotation: rotation
             }) 
     
            
@@ -272,7 +273,7 @@ class Monster extends Sprite {
 
              case 'Surf':
                 const SurfImage = new Image()
-                SurfImage.src = 'gameassests/Images/Images/mudShot.png'
+                SurfImage.src = 'gameassests/Images/Images/surf.png'
                 const Surf = new Sprite({
                   position:{
                       x:this.position.x,
@@ -281,7 +282,7 @@ class Monster extends Sprite {
                   image: SurfImage,
         
                   frames:{
-                      max: 2,
+                      max: 1,
                       hold: 15
                   },
                   animate: true,
@@ -290,7 +291,7 @@ class Monster extends Sprite {
                
                  renderedSrites.splice(1,0, Surf)
         
-                 gsap.to(MudShot.position, {
+                 gsap.to(Surf.position, {
                   x: recipient.position.x,
                   y: recipient.position.y,
                   onComplete: () => {
@@ -313,14 +314,6 @@ class Monster extends Sprite {
                       renderedSrites.splice(1, 1)
                   }
                  })
-
-
-
-
-
-
-
-
     }
   } 
 }
