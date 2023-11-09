@@ -35,7 +35,7 @@ const monsters = {
         animate: true,
         isEnemy: true,
         name: 'Quagsire',
-        attacks: [attacks.Surf, attacks.MudShot, attacks.SludgeBomb, attacks.Surf]
+        attacks: [attacks.BodySlam, attacks.MudShot, attacks.SludgeBomb, attacks.Surf]
     }
 
 }

@@ -39,12 +39,21 @@ document.querySelectorAll('button').forEach((button) => {
        const selectedAttack = attacks[event.currentTarget.innerHTML]
         pokemon2.attack({ attack:selectedAttack,
         recipient: pokemon1, renderedSrites
-     })
+     }) 
+
+     const randomAttack = pokemon1.attacks[Math.floor(Math.random() * pokemon1.attacks.length)]
+
      queue.push(()=>{
-        pokemon1.attack({ attack: attacks.BodySlam,
+        pokemon1.attack({ attack: randomAttack,
             recipient: pokemon2, renderedSrites
          })
      })
+     
+    })
+    button.addEventListener('mouseenter', (event) => {
+        const selectedAttack = attacks[event.currentTarget.innerHTML]
+        document.querySelector('#attackType').innerHTML = selectedAttack.type
+        document.querySelector('#attackType').style.color = selectedAttack.color
     })
 })
 

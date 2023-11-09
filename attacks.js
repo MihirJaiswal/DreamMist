@@ -2,26 +2,31 @@ const attacks = {
     BodySlam: {
       name: 'BodySlam',
       damage: 6,
-      type: 'Normal'
+      type: 'Normal',
+      color: 'grey'
     },
     SeedBomb: {
       name: 'SeedBomb',
       damage: 30,
-      type: 'Grass'
+      type: 'Grass',
+      color: 'green'
     },
     MudShot: {
       name: 'MudShot',
       damage: 20,
-      type: 'Ground'
+      type: 'Ground',
+      color: 'brown'
     },
     SludgeBomb: {
       name: 'SludgeBomb',
       damage: 15,
-      type: 'Poison'
+      type: 'Poison',
+      color: 'purple'
     },
     Surf: {
       name: 'Surf',
       damage: 10,
-      type: 'Water'
+      type: 'Water',
+      color: 'blue'
     }
   };
