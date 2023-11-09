@@ -131,6 +131,7 @@ class Monster extends Sprite {
                 x: recipient.position.x,
                 y: recipient.position.y,
                 onComplete: () => {
+                    audio.attack2j.play()
                     gsap.to(healthBar, {
                         width: recipient.health + '%'
                     })
@@ -170,6 +171,7 @@ class Monster extends Sprite {
          duration: 0.1,
          onComplete: () => {
 
+            audio.attack1.play()
             gsap.to(healthBar, {
                 width: recipient.health + '%'
             })
@@ -216,6 +218,7 @@ class Monster extends Sprite {
           x: recipient.position.x,
           y: recipient.position.y,
           onComplete: () => {
+              audio.attack1.play()
               gsap.to(healthBar, {
                   width: recipient.health + '%'
               })
@@ -238,6 +241,7 @@ class Monster extends Sprite {
          break
    
          case 'SludgeBomb':
+            audio.attack2i.play()
             const SludgebombImage = new Image()
             SludgebombImage.src = 'gameassests/Images/Images/sludgeBomb.png'
             const Sludgebomb = new Sprite({
@@ -262,6 +266,7 @@ class Monster extends Sprite {
               x: recipient.position.x,
               y: recipient.position.y,
               onComplete: () => {
+                  audio.attack2j.play()
                   gsap.to(healthBar, {
                       width: recipient.health + '%'
                   })
@@ -307,6 +312,7 @@ class Monster extends Sprite {
                   x: recipient.position.x,
                   y: recipient.position.y,
                   onComplete: () => {
+                      audio.attack2j.play()
                       gsap.to(healthBar, {
                           width: this.health + '%'
                       })
