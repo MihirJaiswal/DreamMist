@@ -31,6 +31,8 @@ class Sprite {
         c.rotate(this.rotation)
         c.translate(-this.position.x - this.width / 2, -this.position.y - this.height /2)
         c.globalAlpha = this.opacity
+
+        
         c.drawImage(
             this.image, 
             this.frames.val * this.width,//represents the x coordinate where we wants to crop
